@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-9"?>
+<form-validator>
+	<form name="form1">
+		<field name="field_3" rule="minimumLength(%VALUE,3)" message="field 3 en az 3 karakter olmalı"/>
+		<field name="field_4" rule="isInteger(%VALUE)" message="field 4 numerik olmalı"/>
+		<field name="field_5" rule='regex(%VALUE,"[a-zA-Z]{1,11}")' message="field 5 email olmalı" />
+	</form>
+</form-validator>

@@ -1,0 +1,38 @@
+<!--
+Main Trophy Configuration File
+08.09.2004
+-->
+<!DOCTYPE trophy-configuration PUBLIC "-//TROPHY/DTD Trophy Configuration 1.0//EN" "D:\source\web\trophy-example-1\WEB-INF\trophy-cfg-1.0.dtd">
+<trophy-configuration>
+	<page>
+		<global-function type="startup-function" name="registerValidationFields" />
+		<global-function type="shutdown-function" name="clearSession" />
+		<global-function type="shutdown-function" name="freeResources" />
+		<global-function type="request-filter" name="fixInjection" />
+	</page>
+	<datasources>
+		<datasource name="d1" url="Provider=SQLOLEDB;Driver={SQL Server};Server=devuchka;Database=knv3_db;UID=sa;PWD=1313" />
+	</datasources>
+	<userobjects>
+	</userobjects>
+	<actions>
+		<action default="true" type="test1" page="test01.asp"/>
+		<action type="test5" page="test03.asp" validator="form1-validator.xml"/>
+	</actions>
+	<!--You can add your own parameters below-->
+	<global-parameters>
+		<global-parameter name="default-form-template" value="f:trophy-form.tpl" />
+		<global-parameter name="default-field-template" value="f:trophy-field.tpl" />
+		<global-parameter name="default-form-validation-template" value="f:trophy-form-validation.tpl" />
+		<global-parameter name="default-mail-component" value="JMail" />
+		<global-parameter name="default-mail-server" value="JAH.rafineri.net" />
+		<global-parameter name="site-url" value="http://ufukk/projects/trophy-example-1/" />
+	</global-parameters>
+	<templates>
+		<resource name="r" default="true" label="R" path="templates\resources" relative="true" />
+		<resource name="f" label="F" path="templates\form" relative="true" />
+	</templates>
+	<loggers>
+		<logger name="default" path="D:\source\web\trophy-example-1\logs\log1.txt" maxsize="100K" format="(%d %M %Y %H:%M:%S) [S]: [M]"/>
+	</loggers>
+</trophy-configuration>

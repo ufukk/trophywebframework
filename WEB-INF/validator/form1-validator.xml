@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-9"?>
+<form-validator>
+	<form>
+		<field name="field_3" rule="minimumLength({fields.field_3},6)" message="field 3 en az 3 karakter olmalı"/>
+		<field name="field_4" rule="isInteger({fields.field_4})" message="field 4 numerik olmalı"/>
+		<field name="field_5" rule='regex({fields.field_5},"[a-zA-Z]{1,11}")' message="field 5 email olmalı" />
+		<field name="field_5" rule="isInteger({fields.field_6})" client="false" message="field 6 NUMERIK" />
+	</form>
+</form-validator>

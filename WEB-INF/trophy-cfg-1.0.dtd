@@ -1,0 +1,95 @@
+<!--
+Trophy-configuration 
+Every parameter that any trophy global object use, should be defined here.
+Usage: 
+	<!DOCTYPE trophy-configuration PUBLIC "-//TROPHY/DTD Trophy Configuration 1.0//EN" "http://www.ufux.com/trophy-cfg-1.0.dtd">
+	<!DOCTYPE trophy-configuration PUBLIC "-//TROPHY/DTD Trophy Configuration 1.0//EN" "./trophy-cfg-1.0.dtd">
+-->
+<!-- Document Root -->
+<!ELEMENT trophy-configuration (page+, datasources*, userobjects*, actions+, global-parameters*, templates*, loggers*)>
+<!-- 
+	Page element defines global functions which trophy will execute on every page load.
+-->
+<!ELEMENT page (global-function*)>
+<!--
+	Global functions have three types: startup-functions (which are executed just after trophy core object initializes), 
+	shutdown-functions (which are executed after page finishes loading) and request-filters (which are executed each-time user tries to reach a request parameter)
+-->
+<!ELEMENT global-function EMPTY>
+	<!ATTLIST global-function type (startup-function|shutdown-function|request-filter) "startup-function">
+	<!ATTLIST global-function name CDATA #REQUIRED>
+<!--
+	Each datasource should be defined by a unique datasource name and url attribute should include a valid connection string.
+-->
+<!ELEMENT datasources (datasource*)>
+<!ELEMENT datasource EMPTY>
+	<!ATTLIST datasource name CDATA #REQUIRED>
+	<!ATTLIST datasource url CDATA #REQUIRED>
+	<!ATTLIST datasource autoconnect (true|false) "false">
+<!--
+	An userobject is mostly a business object that accesses a database.  To auto load userobjects before executing the choosen action, they must be
+	defined here by their class names. 
+-->
+<!ELEMENT userobjects (userobject*)>
+<!ELEMENT userobject EMPTY>
+	<!ATTLIST userobject name CDATA #REQUIRED>
+	<!ATTLIST userobject className CDATA #REQUIRED>
+	<!ATTLIST userobject datasource CDATA #IMPLIED>
+	<!ATTLIST userobject dbobjectName CDATA #IMPLIED>
+<!ELEMENT actions (action+)>
+<!ELEMENT action (action-properties*, action-userobjects*, action-templates*)>
+	<!ATTLIST action default (true|false) "false">
+	<!ATTLIST action type CDATA #REQUIRED>
+	<!ATTLIST action className CDATA #IMPLIED>
+	<!ATTLIST action page CDATA #REQUIRED>
+	<!ATTLIST action method CDATA #IMPLIED>
+	<!ATTLIST action validator CDATA #IMPLIED>
+<!ELEMENT action-properties (action-property*)>
+<!ELEMENT action-property EMPTY>
+	<!ATTLIST action-property name CDATA #REQUIRED>
+	<!ATTLIST action-property parameter CDATA #IMPLIED>
+<!ELEMENT action-userobjects (action-userobject*)>
+<!ELEMENT action-userobject (action-userobject-properties*)>
+	<!ATTLIST action-userobject name CDATA #REQUIRED>
+	<!ATTLIST action-userobject instanceName CDATA #REQUIRED>
+	<!ATTLIST action-userobject passAllProperties CDATA "false">
+<!ELEMENT action-userobject-properties (action-userobject-property*)>
+<!ELEMENT action-userobject-property EMPTY>
+	<!ATTLIST action-userobject-property name CDATA #REQUIRED>
+	<!ATTLIST action-userobject-property parameter CDATA #IMPLIED>
+<!ELEMENT action-templates (action-template*)>
+<!ELEMENT action-template EMPTY>
+	<!ATTLIST action-template path CDATA #REQUIRED>
+<!ELEMENT global-parameters (global-parameter*)>
+<!ELEMENT global-parameter EMPTY>
+	<!ATTLIST global-parameter name CDATA #REQUIRED> 
+	<!ATTLIST global-parameter value CDATA #REQUIRED> 
+<!ELEMENT templates (auto-load-file*, resource*)>
+<!ELEMENT auto-load-file EMPTY>
+	<!ATTLIST auto-load-file path CDATA #REQUIRED>
+<!ELEMENT resource EMPTY>
+	<!ATTLIST resource name CDATA #REQUIRED>
+	<!ATTLIST resource default CDATA #IMPLIED>
+	<!ATTLIST resource label CDATA #REQUIRED>
+	<!ATTLIST resource path CDATA #REQUIRED>
+	<!ATTLIST resource relative (true|false) "true">
+<!ELEMENT loggers (logger*)>
+<!ELEMENT logger EMPTY>
+	<!ATTLIST logger name CDATA #REQUIRED>
+	<!ATTLIST logger path CDATA #REQUIRED>
+	<!ATTLIST logger maxsize CDATA #REQUIRED>
+	<!ATTLIST logger format CDATA #REQUIRED>
+		
+
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+
